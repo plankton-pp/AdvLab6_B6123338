@@ -37,7 +37,7 @@ public class Command2 {
             this.balance = balance;
         }
 
-        public synchronized void process(double[] amount, int type) {
+        public void process(double[] amount, int type) {
             for (int i = 0; i < amount.length; i++) {
                 //code: type 1 = deposit, type 2 = withdraw;
                 try {
