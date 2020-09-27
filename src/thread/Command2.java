@@ -42,6 +42,17 @@ public class Command2 {
                 //code: type 1 = deposit, type 2 = withdraw;
                 try {
                     Thread.sleep(2);
+                    if(type==1){
+                        this.balance += amount[i];
+                        System.out.printf("\nBalance1: %.2f",this.balance);
+                    }else if(type==2){
+                        if(this.balance>=amount[i]){
+                            this.balance -= amount[i];
+                            System.out.printf("\nBalance2: %.2f",this.balance);
+                        }else{
+                            System.out.printf("\nBalance is not enough to withdraw!!");
+                        }
+                    }
                 } catch (InterruptedException ie) {
 
                 }
