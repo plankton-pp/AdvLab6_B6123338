@@ -32,18 +32,7 @@ public class Command3 {
             }
             thread[i] = new printRes(start,end);
             thread[i].run();
-        }
-        //Start Tread
-        /*for(int j=0;j<amount;j++){
-            thread[j].run();
-        }*/
-        //Waiting for all thread end work
-        for(int k=0;k<amount;k++){
-            try{
-                thread[k].join();
-            }catch(InterruptedException ie){
-                ie.printStackTrace();
-            }
+
         }
         long endTime = System.currentTimeMillis();
         //
