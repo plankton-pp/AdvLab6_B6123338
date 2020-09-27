@@ -43,7 +43,16 @@ public class Command2 {
                 try {
                     Thread.sleep(2);
                 } catch (InterruptedException ie) {
+                
                 }
+            }
+        }
+
+    }
+    static class ProcessThread extends Thread {
+        public ProcessThread(double amount[], int type, MyAccount account) {
+            public void run(){
+                account.process(amount, type);
             }
         }
     }
