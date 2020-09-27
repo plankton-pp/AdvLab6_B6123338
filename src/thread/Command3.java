@@ -7,7 +7,8 @@ public class Command3 {
         Scanner scan = new Scanner(System.in);
         int amount;
         long num,result=0;
-        int start=0,end=0;
+        int start=0;
+        int end=0;
 
 
         System.out.print("Enter the Number (N):");
@@ -19,19 +20,24 @@ public class Command3 {
         printRes[] thread = new printRes[amount];
         //Start Time
         long startTime = System.currentTimeMillis();
-        //Loop for create new to ProcessTread Array
+        //Create Tread and Keep Start&End Range
         for(int i=0;i<amount;i++){
             start = end+1;
+            //147
+            //369
             end += num/amount;
             //Last Thread
-            if(i==amount-1){
-                end += num%amount;
+            if(i==(amount-1)){
+                end += (num%amount);
             }
             thread[i] = new printRes(start,end);
+            thread[i].run();
         }
-        for(int j=0;j<amount;j++){
-            thread[j].start();
-        }
+        //Start Tread
+        /*for(int j=0;j<amount;j++){
+            thread[j].run();
+        }*/
+        //Waiting for all thread end work
         for(int k=0;k<amount;k++){
             try{
                 thread[k].join();
@@ -40,9 +46,10 @@ public class Command3 {
             }
         }
         long endTime = System.currentTimeMillis();
+        //
         for(int l=0;l<amount;l++){
             result += thread[l].count;
-            System.out.printf("Result of Thread%d =%d\n",l+1,result);
+            System.out.printf("Result of Thread%d =%d\n",l+1,thread[l].count);
         }
 
         System.out.printf("Result: %d\n",result);
@@ -50,7 +57,8 @@ public class Command3 {
 
     }
     static class printRes extends Thread{
-        int start, end, count=0;
+        int start, end;
+        long count=0;
         public printRes(int start,int end){
             this.start = start;
             this.end = end;
